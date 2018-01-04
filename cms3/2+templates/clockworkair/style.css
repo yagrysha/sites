@@ -1,0 +1,176 @@
+/*
+Theme Name: ClockWorkAir
+Theme URI: http://clockworkblogger.com/theme-clockworkair/
+Description: A clean, professional, yet beautiful theme featuring author comment highlighting, subscribe to comments and a built-in breadcrumb wrapped up in an elegant shell by <a href="http://clockworkblogger.com">ClockWorkBlogger</a>. Please use the <a href="http://clockworkblogger.com/theme-clockworkair/">ClockWorkAir theme</a> page to submit your comments and suggestions.
+Version: 1.1.0
+Author: Lukasz Sobek
+Author URI: http://sobek.pl
+Tags: fixed width, 3 columns, 2 columns, two columns, three columns, white, blue, grey, black, orange, right sidebar, breadcrumb, author highlight, gravatar, clean, simple, widgets, widget, gravatars, valid CSS,valid XHTML
+*/
+
+* 					{margin: 0; padding: 0; font-family: arial,sans; font-size: 13px;}
+
+a 					{text-decoration: none;}
+a:hover 				{text-decoration: underline;}
+
+img					{border: none;}
+
+#wrapper 			{margin: 10px auto 0 auto; width: 900px;}
+
+/* ---- Header part */
+
+#header 				{margin: 30px 0 30px 0; border-bottom: 1px solid #fff;}
+
+/* ---- top menu */
+
+.topmenu 			{margin: 0 0 0;}
+.topmenu ul			{list-style: none;}
+.topmenu ul li			{display: inline;}
+
+.topmenu a 			{display: block; float: left; padding: 5px 15px 2px 15px; color: #999;  border-right: 1px solid #eee;}
+.topmenu a:hover 	{color: #2382c4;}
+.topmenu .feed		{color: #f57100; border-right: none;}
+
+/* ---- search box */
+
+#s					{padding: 3px; border: 1px solid #ddd; width: 250px; color: #999;}
+#s:hover			{border: 1px solid #000;}
+
+#searchsubmit		{padding: 2px 5px; border: 1px solid #327eb0; background: #327eb0; color: #fff;}
+#searchsubmit:hover 	{background: #40a2e3;}
+
+/* ---- Header box */
+
+#headerbox			{padding: 40px 30px; text-align: center; background: #2382c4 url('images/grad_top.png') top left repeat-x; border: 1px solid #2382c4;}
+
+#headerbox h1,
+#headerbox h1 a			{color: #fff; letter-spacing: -1px; text-decoration: none; font-size: 30px;}
+
+#headerbox .descri		{color: #b6daf2;}
+#headerbox .about		{width: 350px; height: 50px; padding: 0 50px; border-left: 1px solid #2382c4; color: #134567;}
+#headerbox .about a		{color: #fff;}
+
+/* ---- teaser */
+
+#teaser 				{color: #999; padding: 10px 15px; margin-bottom: 20px;}
+#teaser a			{color: #333;}
+
+/* ---- Content */
+
+#content 			{margin-left: 15px; width: 500px; padding-right: 30px; border-right: 1px solid #fff; line-height: 180%; font-size: 14px; color: #222;}
+
+#content ul			{margin: 10px 0 10px 10px; list-style: none;}
+#content ul li			{background: url('images/bullet_new.gif') 0 5px no-repeat; margin: 5px 0; padding-left: 15px; font-size: 14px; }
+
+#content ol			{margin: 10px 0 10px 10px; list-style: decimal inside;}
+#content ol li			{margin: 5px 0; font-size: 14px; }
+
+#content p			{margin: 10px 0; font-size: 14px;}
+
+#content a			{color: #2382c4;}
+
+#content blockquote	{border-left: 1px solid #327eb0; padding: 10px; font-style: italic; background: #ddd;}
+
+#content .indicator 	{float: left; margin-left: -30px; font-size: 30px; color: #999;}
+
+#content h1,
+#content h2,
+#content h1 a,
+#content h2 a 		{color: #000; letter-spacing: -1px; text-decoration: none;}
+
+#content h1,
+#content h1 a			{font-size: 20px; }
+
+#content h2,
+#content h2 a			{font-size: 17px; margin-bottom: 10px;}
+
+#content h1 a:hover,
+#content h2 a:hover	{color: #000; background: #fff; text-decoration:underline;}
+
+#content h2			{margin-top: 10px;}
+
+#content h3			{font-size: 14px; margin-top: 10px; color: #666; }
+
+#content .metadata	{color: #999; margin: 5px 0 20px 0;}
+
+#content .m_date ,
+#content .m_author,
+#content .m_comments	{padding: 5px 10px; border-right: 1px solid #eee;}
+
+#content .m_date  	{}
+#content .m_author  	{}
+#content .m_comments {border-right: none;}
+
+#content .entry		{margin-bottom: 50px; }
+
+/* ---- Comments */
+
+#content .comments-template {margin-top: 20px;}
+#content .commentlist 	{list-style: none; margin: 10px 0 0 0;}
+
+#content .commentmetadata { padding: 5px 10px; background: #eee; margin: 5px 0; line-height: 170%;}
+#content .commentmetadata img	{float: left; padding: 2px; margin: 5px 10px 5px 0; border: 1px solid #000; }
+
+#content .authorcomment	{background: #2382c4 url('images/grad_top.png') top left repeat-x; margin: 5px 0 5px -30px; color: #fff;}
+#content .authorcomment a {color: #fff;}
+
+/* ---- Sidebar */
+
+#sidebar 			{width: 320px; float: right; line-height: 180%; color: #999;}
+
+#sidebar .leftbar	{width: 150px;}
+#sidebar .rightbar	{float: right; width: 150px;}
+
+#sidebar a			{color: #666; }
+#sidebar a img		{padding: 20px; border: none; }
+
+#sidebar h4,
+#sidebar h5			{color: #134567; margin: 25px 0 5px 0; font-weight: normal;}
+
+#sidebar h4			{font-size: 14px;}
+
+#sidebar h5			{font-size: 13px;}
+
+#sidebar ul			{margin: 10px 0 10px 5px; list-style: none;}
+#sidebar ul li			{background: url('images/bullet_pale.gif') 0 5px no-repeat; padding-left: 15px;}
+#sidebar ul.new li		{background: url('images/bullet_new.gif') 0 5px no-repeat; padding-left: 15px;}
+
+#sidebar ol			{margin: 10px 0 10px 5px; list-style: decimal inside;}
+
+/* ---- subfooter */
+
+#subfooter			{color: #2382c4; padding: 10px 15px; background: #2382c4 url('images/grad_top.png') top left repeat-x; border: 1px solid #2382c4; margin-top: 30px;}
+#subfooter a			{color: #fff; padding: 0 10px;}
+
+/* ---- Footer */
+
+#footer 				{color: #999; padding: 5px 30px; margin-top: 10px;}
+#footer a			{color: #333;}
+#footer a.authorlink {color: #999;}
+
+/* ---- comments */
+
+#author, #email, #url, #comment { border: 1px solid #ccc; padding: 5px; margin-top: 5px;}
+
+#author 				{width: 250px; }
+#email 				{width: 250px; }
+#url 				{width: 250px; }
+#comment 			{width: 500px; }
+#submit 				{background: #e35c00; color: #fff; padding: 10px; border: 1px solid #ccc; margin-top: 10px;}
+
+/* ---- Required by WordPress */
+
+.aligncenter,
+div.aligncenter 		{display: block; margin: 0 auto;}
+
+.alignleft 			{float: left;}
+
+.alignright 			{float: right;}
+
+.wp-caption 			{border: 1px solid #ddd; text-align: center; background-color: #f3f3f3; padding-top: 4px; margin: 10px;
+				/* optional rounded corners for browsers that support it */
+		   		-moz-border-radius: 3px; -khtml-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; }
+
+.wp-caption img 		{border: 0 none; }
+
+.wp-caption p.wp-caption-text 	{ font-size: 11px; line-height: 17px; padding: 0 4px 5px; }

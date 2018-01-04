@@ -1,0 +1,51 @@
+extends ../layouts/admin
+
+block content
+    div(class="page-header")
+        h3 Редактирование пользователя
+
+    form(method="post", action="", class="form-horizontal")
+
+        div(class="control-group")
+            label(class="control-label", for="username") Логин
+            div(class="controls")
+                - if (user.username)
+                    input(type="text", name="username", id="username", value="#{user.username}")
+                - else
+                    input(type="text", name="username", id="username")
+
+        div(class="control-group")
+            label(class="control-label", for="email") Email
+            div(class="controls")
+                - if (user.email)
+                    input(type="email", name="email", id="email", value="#{user.email}")
+                - else
+                    input(type="email", name="email", id="email")
+
+        div(class="control-group")
+            label(class="control-label", for="type") Тип
+            div(class="controls")
+                select(name="type")
+                    - types.forEach(function(type, index){
+                        - if (index == user.type){
+                            option(value="#{index}", selected) #{type}
+                        - } else {
+                            option(value="#{index}") #{type}
+                        - }
+                    - })
+
+        div(class="control-group")
+            label(class="control-label", for="roles") Роли
+            div(class="controls")
+                - roles.forEach(function(role){
+                    - if ( user.roles.indexOf(role.id) >= 0 ){
+                        input(type="checkbox", name="roles", value="#{role.id}", checked)
+                    - } else {
+                        input(type="checkbox", name="roles", value="#{role.id}")
+                    - }
+                    | #{role.name} <br/>
+                - })
+
+        div(class="control-label")
+            div(class="controls")
+                input(type="submit", value="Сохранить")

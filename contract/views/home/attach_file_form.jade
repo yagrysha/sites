@@ -1,0 +1,16 @@
+extends ../layouts/layout
+
+block content
+    div(class="page-header")
+        h3 Прикрепление документа к #{project.name}
+
+    form(action="", method="post", enctype="multipart/form-data", class="form-horizontal")
+
+        div(class="control-group")
+            label(class="control-label", for="document") Документ
+            div(class="controls")
+                input(type="file", name="document")
+
+        div(class="control-label")
+            div(class="controls")
+                input(type="submit", value="Загрузить")

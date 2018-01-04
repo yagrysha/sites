@@ -1,0 +1,35 @@
+doctype html
+html
+    head
+        script(src="/js/jquery-1.11.0.min.js")
+        script(src="/js/global.js")
+
+        link(rel='stylesheet', href='/bootstrap/css/bootstrap.css')
+        link(rel='stylesheet', href='/bootstrap/css/bootstrap-responsive.css')
+        script(src="/bootstrap/js/bootstrap.min.js")
+
+        //link(rel='stylesheet', href='/select/bootstrap-select.css')
+        //script(src="/select/bootstrap-select.js")
+        //script(src="/bootstrap/jquery.js")
+
+        link(rel='stylesheet', href='/select2/select2.css')
+        script(src="/select2/select2.js")
+
+
+    body
+
+    div(class="navbar")
+        div(class="navbar-inner")
+            a(class="brand" href="/admin") Админ-панель
+
+            ul(class="nav")
+                li
+                    a(href="/admin/users") Пользователи
+            ul(class="nav")
+                li
+                    a(href="/admin/company") Компании
+            ul(class="nav")
+                li
+                    a(href="/admin/route") Маршруты
+
+    block content

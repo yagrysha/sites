@@ -1,0 +1,15 @@
+extends layout
+block content
+    h1 Создание проекта
+    if project
+        form(action="", method="post")
+            label Name
+                input(type="text", name="name", id="name", value="#{project.name}")
+            label description
+                textarea(name="desc", required="required") #{project.description}
+
+            div(class="control-label")
+                div(class="controls")
+                    input(type="submit", value="Сохранить")
+    else if error
+        p #{error.msg}

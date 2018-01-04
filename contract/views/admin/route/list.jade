@@ -1,0 +1,25 @@
+extends ../../layouts/admin
+block content
+    div(class="page-header")
+        h3 Список маршрутов
+        a(class="btn btn-primary pull-right", href="/admin/route/new" style="margin-top:-45px;") Создать
+
+    if (routes.length)
+        table(class="table table-hover")
+            thead
+                tr
+                    th Алиас
+                    th Название
+                    th Описание
+                    th(width="220px") Действия
+            tbody
+                - routes.forEach(function(route){
+                    tr
+                        td #{route.alias}
+                        td #{route.name}
+                        td #{route.description}
+                        td
+                            div(class="btn-group")
+                                a(class="btn btn-primary", href="/admin/route/edit/#{route.id}") Редактировать
+                                a(class="btn btn-primary", onclick="return delete_confirm();", href="/admin/route/delete/#{route.id}") Удалить
+                - })

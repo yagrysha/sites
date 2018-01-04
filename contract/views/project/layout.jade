@@ -1,0 +1,15 @@
+extends ../layouts/layout
+block head
+    script(src="/js/project.js")
+
+block header
+    .navbar
+        .navbar-inner
+            a(class="brand" href="/") Главная
+            if _user
+                ul(class="nav")
+                if _user.isAdmin()
+                    li
+                        a(href="/admin") Админка
+                li
+                    a(href="/project") Проекты

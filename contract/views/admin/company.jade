@@ -1,0 +1,25 @@
+extends ../layouts/admin
+
+block content
+
+    div(class="page-header")
+        h3 Список компаний
+        a(class="btn btn-primary pull-right", href="/admin/company/new" style="margin-top:-45px;") Создать
+
+    - if (companies.length)
+        table(class="table table-hover")
+            thead
+                tr
+                    th id
+                    th Название
+                    th(width="220px") Действия
+            tbody
+                - companies.forEach(function(company){
+                    tr
+                        td #{company.id}
+                        td #{company.name}
+                        td
+                            div(class="btn-group")
+                                a(class="btn btn-primary", href="/admin/company/edit/#{company.id}") Редактировать
+                                a(class="btn btn-primary", onclick="return delete_confirm();", href="/admin/company/delete/#{company.id}") Удалить
+                - })

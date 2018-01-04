@@ -1,0 +1,37 @@
+div(class="modal hide fade", id="modalForm", role="dialog")
+    div(class="modal-header")
+        button(type="button", class="close", data-dismiss="modal") ×
+        h3 Редактирование поля
+        div(id="error", class="alert alert-error hide")
+    div(class="modal-body")
+        div(id="form")
+    div(class="modal-footer")
+        button(class="btn", data-dismiss="modal") Отмена
+        button(class="btn btn-primary", onclick="send_modal_form()") Сохранить
+
+    script.
+        function send_modal_form(){
+            var data = $('#form form').serialize();
+            var type = $('#form form').attr('method');
+            var url = $('#form form').attr('action');
+
+            $.ajax({
+                type: type,
+                url: url,
+                data: data,
+                beforeSend: function(){
+                    $('#modalForm #error').attr('class', 'alert alert-error hide');
+                },
+                success: function( res ) {
+                    if ( res.status == 'ok' ){
+                        $('#modalForm').modal('hide');
+                    } else {
+                        $('#modalForm #error').html( res.message );
+                        $('#modalForm #error').removeClass( 'hide' );
+                    }
+                },
+                error: function(res){
+                    alert('Возникла ошибка');
+                }
+            });
+        }

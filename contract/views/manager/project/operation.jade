@@ -1,0 +1,68 @@
+extends ../layout
+block content
+    div(class="page-header")
+        h3 Операция "#{operation.name}". Проект "#{project.name}"
+    ul(class="nav nav-pills")
+        li(class="active")
+            a(href="#", onclick="comment_form();") Добавить комментарий
+    div(class="hero-unit")
+        p #{operation.description}
+
+    div(id="log", class="alert alert-info")
+
+    div(id="comment", class="alert alert-info")
+
+    form(method="post", action="", enctype="multipart/form-data", class="form-horizontal")
+        each field in operation.fields
+            div(class="control-group")
+                label(class="control-label", for="name") #{field.label}
+                div(class="controls")
+                    if (field.type=='text')
+                        input(type=field.type, name=field.name)
+                    if(field.type=='select')
+                        select(name=field.name)
+                            each option in field.settings.value
+                                option(value="#{option.id}") #{option.name}
+                    if (field.type=='file')
+                        input(type=field.type, name=field.name)
+                    //todo сделать вывод всех типов полей.
+        .form-actions
+            each control, name in operation.controls
+                input(type="submit", name=name, value=control.title, class="btn")
+
+    div(class="modal hide fade", id="modalComment", role="dialog")
+        div(class="modal-header")
+            button(type="button", class="close", data-dismiss="modal") ×
+            h3 Комментарий к операции
+        div(class="modal-body")
+            form(method="post", action="", class="form-horizontal")
+                div(class="control-group")
+                    label(class="control-label", for="description") Комментарий
+                    div(class="controls")
+                        textarea(rows="3", name="comment")
+        div(class="modal-footer")
+            button(class="btn", data-dismiss="modal") Отмена
+            button(class="btn btn-primary", onclick="send_modal_form()") Сохранить
+    script.
+        $(function(){
+            project.loadOperationLog($('#log'), '#{_id}');
+        });
+        $(function(){
+            project.loadOperationComment($('#comment'), '#{_id}');
+        });
+        function comment_form(){
+            $('#modalComment').modal('show');
+        }
+        function send_modal_form(){
+            var data = $('#modalComment form').serialize();
+                $.ajax({
+                type: 'POST',
+                url: '/project/operation/#{_id}/comment',
+            data: data,
+            success: function() {
+                },
+            error:  function(xhr){
+                alert('Возникла ошибка: ' + xhr.responseCode);
+            }
+            });
+        }

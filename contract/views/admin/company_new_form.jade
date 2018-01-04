@@ -1,0 +1,15 @@
+extends ../layouts/admin
+
+block content
+    h3 Создание новой компании
+
+    form(method="post", action="", class="form-horizontal")
+
+        div(class="control-group")
+            label(class="control-label", for="name") Название
+            div(class="controls")
+                input(type="text", name="name", id="name")
+
+        div(class="control-label")
+            div(class="controls")
+                input(type="submit", value="Создать")

@@ -1,0 +1,19 @@
+extends ../layouts/admin
+
+block content
+    div(class="page-header")
+        h3 Редактирование компании
+
+    form(method="post", action="", class="form-horizontal")
+
+        div(class="control-group")
+            label(class="control-label", for="name") Название
+            div(class="controls")
+                - if (company.name)
+                    input(type="text", name="name", id="name", value="#{company.name}")
+                - else
+                    input(type="text", name="name", id="name")
+
+        div(class="control-label")
+            div(class="controls")
+                input(type="submit", value="Сохранить")

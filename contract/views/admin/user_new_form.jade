@@ -1,0 +1,41 @@
+extends ../layouts/admin
+
+block content
+    h3 Создание нового пользователя
+
+    form(method="post", action="", class="form-horizontal")
+
+        div(class="control-group")
+            label(class="control-label", for="username") Логин
+            div(class="controls")
+                input(type="text", name="username", id="username")
+
+        div(class="control-group")
+            label(class="control-label", for="password") Пароль
+            div(class="controls")
+                input(type="password", name="password", id="password")
+
+        div(class="control-group")
+            label(class="control-label", for="email") Email
+            div(class="controls")
+                input(type="email", name="email", id="email")
+
+        div(class="control-group")
+            label(class="control-label", for="type") Тип
+            div(class="controls")
+                select(name="type")
+                    - types.forEach(function(type, index){
+                        option(value="#{index}") #{type}
+                    - })
+
+        div(class="control-group")
+            label(class="control-label", for="roles") Роли
+            div(class="controls")
+                - roles.forEach(function(role){
+                    input(type="checkbox", name="roles", value="#{role.id}")
+                    | #{role.name} <br/>
+                - })
+
+        div(class="control-label")
+            div(class="controls")
+                input(type="submit", value="Создать")

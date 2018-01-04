@@ -1,0 +1,53 @@
+form(method="post", action="", class="form-horizontal")
+
+    div(class="control-group")
+        label(class="control-label", for="name") Название *
+        div(class="controls")
+            if (data.name)
+                input(class="span3", type="text", name="name", value="#{data.name}")
+            else
+                input(class="span3", type="text", name="name")
+
+    div(class="control-group")
+        label(class="control-label", for="alias") Алиас *
+        div(class="controls")
+            if (data.name)
+                input(class="span3", type="text", name="alias", value="#{data.alias}")
+            else
+                input(class="span3", type="text", name="alias")
+
+    div(class="control-group")
+        label(class="control-label", for="description") Описание
+        div(class="controls")
+            textarea(class="span3", rows="3", name="description")
+                if (data.description)
+                    | #{data.description}
+
+    div(class="control-group")
+        label(class="control-label", for="access") Ответственный *
+        div(class="controls")
+            select(class="select2", multiple, name="access", placeholder="Выберите из списка...")
+                option
+                - roles.forEach(function(role){
+                    - if ( data.access.indexOf(role.alias) >= 0 ){
+                        option(value="#{role.alias}", selected) #{role.name}
+                    - } else {
+                        option(value="#{role.alias}") #{role.name}
+                    - }
+                - })
+
+    div(class="control-group")
+        label(class="control-label", for="related") Связанные операции
+        div(class="controls")
+            select(class="select2", multiple, name="related", placeholder="Выберите из списка...")
+                option
+                - operations.forEach(function(operation){
+                    - if ( data.related.indexOf(operation.alias) >= 0 ){
+                        option(value="#{operation.alias}", selected) #{operation.name}
+                    - } else {
+                        option(value="#{operation.alias}") #{operation.name}
+                    - }
+                - })
+
+    script.
+        $('.select2').select2({containerCss : {"display":"block"}});

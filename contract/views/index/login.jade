@@ -1,0 +1,14 @@
+extends ../layouts/layout
+
+block content
+    div(class="container")
+        div(class="row")
+            div(class="span4 offset4 well")
+                legend Пожалуйста, авторизуйтесь
+                div(class="alert alert-error")
+                    a(class="close", data-dismiss="alert", href="#") x
+                    | Неверный логин или пароль
+                form(method="POST", action="")
+                    input(type="text", class="span4", name="username", placeholder="Логин")
+                    input(type="password", class="span4", name="password", placeholder="Пароль")
+                    button(type="submit", name="submit", class="btn btn-info btn-block") Войти

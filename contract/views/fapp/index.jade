@@ -1,0 +1,11 @@
+extends ../layouts/layout
+block content
+    input(type="file", name="file", multiple)
+    ul
+        each file in files
+            li: a(href="/download/"+file.id)=file.name
+                a(href="", class="btn btn-danger btn-delete", data-id = file.id)  del
+
+
+block footer
+    script(src="/js/fapp.js")

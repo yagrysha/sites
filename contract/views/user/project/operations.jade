@@ -1,0 +1,17 @@
+extends ../layout
+block content
+    div(class="page-header")
+        h3 Список текущих операций
+
+    if (operations.length)
+        each op in operations
+            p
+                | Название: #{op.operation.name}
+                br
+                | Проект: #{op.project.name}
+                br
+                | Описание: #{op.operation.description}
+                div(class="label")= op.getStatusName()
+                br
+                a(href="/user/operation/#{op._id}") Начать
+            hr(class="divider")

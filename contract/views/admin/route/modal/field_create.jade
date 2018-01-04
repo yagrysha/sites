@@ -1,0 +1,70 @@
+form(method="post", action="", class="form-horizontal")
+
+    div(class="control-group")
+        label(class="control-label", for="operation_id") Операция *
+        div(class="controls")
+            select(class="select2", name="operation_id", placeholder="Выберите из списка...")
+                option
+                - operations.forEach(function(operation){
+                    option(value="#{operation.id}") #{operation.name}
+                - })
+
+    div(class="control-group")
+        label(class="control-label", for="title") Название *
+        div(class="controls")
+            input(class="span3", type="text", name="title")
+
+    div(class="control-group")
+        label(class="control-label", for="name") Идентификатор *
+        div(class="controls")
+            input(class="span3", type="text", name="name")
+
+    div(class="control-group")
+        label(class="control-label", for="label") Лейбл *
+        div(class="controls")
+            input(class="span3", type="text", name="label")
+
+    div(class="control-group")
+        label(class="control-label", for="description") Описание
+        div(class="controls")
+            textarea(class="span3", rows="3", name="description")
+
+    div(class="control-group")
+        label(class="control-label", for="type") Тип поля *
+        div(class="controls")
+            select(class="select2", name="type", placeholder="Выберите из списка...")
+                option
+                option(value="text") Текстовое поле
+                option(value="select") Список
+                option(value="file") Файл
+
+    div(class="control-group")
+        div(class="controls")
+            label(class="required")
+                input(type="checkbox", name="required")
+                | Обязательное поле
+
+    hr
+
+    div(class="control-group")
+        label(class="control-label", for="settings[default]") По умолчанию
+        div(class="controls")
+            input(class="span3", type="text", name="settings[default]")
+
+    div(class="control-group")
+        label(class="control-label", for="settings[datasource]") Источник
+        div(class="controls")
+            select(class="select2", title="Источник данных", name="settings[datasource]")
+                option
+                option(value="getcompanies") Список компаний
+
+    div(class="control-group")
+        label(class="control-label", for="settings[setdata]") Назначение
+        div(class="controls")
+            select(class="select2", title="Источник данных", name="settings[setdata]")
+                option
+                option(value="setcompanies") Закрепить компанию за проектом
+                option(value="uploadfile") Загрузить файл
+
+    script.
+        $('.select2').select2({containerCss : {"display":"block"}});

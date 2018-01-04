@@ -1,0 +1,32 @@
+extends layout
+block content
+    div(class="page-header")
+        h3 Операция "#{operation.name}". Проект "#{project.name}"
+
+    div(class="hero-unit")
+        p #{operation.description}
+
+    div(id="log", class="alert alert-info")
+
+    form(method="post", action="", enctype="multipart/form-data", class="form-horizontal")
+        each field in operation.fields
+            div(class="control-group")
+                label(class="control-label", for="name") #{field.label}
+                div(class="controls")
+                    if (field.type=='text')
+                        input(type=field.type, name=field.name)
+                    if(field.type=='select')
+                        select(name=field.name)
+                            each option in field.settings.value
+                                option(value="#{option.id}") #{option.name}
+                    if (field.type=='file')
+                        input(type=field.type, name=field.name)
+                    //todo сделать вывод всех типов полей.
+        .form-actions
+            each control, name in operation.controls
+                input(type="submit", name=name, value=control.title, class="btn")
+
+    script.
+        $(function(){
+            project.loadOperationLog($('#log'), '#{_id}');
+        })

@@ -1,0 +1,17 @@
+extends ../layout
+block content
+    div(class="page-header")
+        h3 Проект  "#{project.name}"
+
+        div(class="pull-right", style="margin-right:20px;")
+            a(class="btn btn-primary", href="/client/project/log/#{project._id}", style="margin-top:-90px;") История
+
+    div(class="hero-unit")
+        p=project.description
+
+    div(id="operations")
+
+    script.
+        $(function(){
+            project.loadOperationsList($('#operations'), '#{project._id}');
+        })

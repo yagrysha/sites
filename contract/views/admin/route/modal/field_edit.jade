@@ -1,0 +1,102 @@
+form(method="post", action="", class="form-horizontal")
+
+    div(class="control-group")
+        label(class="control-label", for="title") Название *
+        div(class="controls")
+            if (data.title)
+                input(class="span3", type="text", name="title", value="#{data.title}")
+            else
+                input(class="span3", type="text", name="title")
+
+    div(class="control-group")
+        label(class="control-label", for="name") Идентификатор *
+        div(class="controls")
+            if (data.name)
+                input(class="span3", type="text", name="name", value="#{data.name}")
+            else
+                input(class="span3", type="text", name="name")
+
+    div(class="control-group")
+        label(class="control-label", for="label") Лейбл *
+        div(class="controls")
+            if (data.label)
+                input(class="span3", type="text", name="label", value="#{data.label}")
+            else
+                input(class="span3", type="text", name="label")
+
+    div(class="control-group")
+        label(class="control-label", for="description") Описание
+        div(class="controls")
+            textarea(class="span3", rows="3", name="description")
+                if (data.description)
+                    | #{data.description}
+
+    div(class="control-group")
+        label(class="control-label", for="type") Тип поля *
+        div(class="controls")
+            select(class="select2", name="type", placeholder="Выберите из списка...")
+                option
+
+                if (data.type == 'text')
+                    option(value="text", selected) Текстовое поле
+                else
+                    option(value="text") Текстовое поле
+
+                if (data.type == 'select')
+                    option(value="select", selected) Список
+                else
+                    option(value="select") Список
+
+                if (data.type == 'file')
+                    option(value="file", selected) Файл
+                else
+                    option(value="file") Файл
+
+    div(class="control-group")
+        div(class="controls")
+            label(class="required")
+                if (data.required)
+                    input(type="checkbox", name="required", checked)
+                else
+                    input(type="checkbox", name="required")
+                | Обязательное поле
+
+    hr
+
+    div(class="control-group")
+        label(class="control-label", for="settings[default]") По умолчанию
+        div(class="controls")
+            if (data.settings['default'])
+                input(class="span3", type="text", name="settings[default]", value="#{data.settings['default']}")
+            else
+                input(class="span3", type="text", name="settings[default]")
+
+    div(class="control-group")
+        label(class="control-label", for="settings[datasource]") Источник
+        div(class="controls")
+            select(class="select2", title="Источник данных", name="settings[datasource]")
+                option
+
+                if (data.settings['datasource'] == 'getcompanies')
+                    option(value="getcompanies", selected) Список компаний
+                else
+                    option(value="getcompanies") Список компаний
+
+    div(class="control-group")
+        label(class="control-label", for="settings[setdata]") Назначение
+        div(class="controls")
+            select(class="select2", title="Источник данных", name="settings[setdata]")
+                option
+
+                if (data.settings['setdata'] == 'setcompanies')
+                    option(value="setcompanies", selected) Закрепить компанию за проектом
+                else
+                    option(value="setcompanies") Закрепить компанию за проектом
+
+                if (data.settings['setdata'] == 'uploadfile')
+                    option(value="uploadfile", selected) Загрузить файл
+                else
+                    option(value="uploadfile") Загрузить файл
+
+    script.
+        $('.select2').select2({containerCss : {"display":"block"}});

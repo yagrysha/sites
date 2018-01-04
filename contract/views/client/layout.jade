@@ -1,0 +1,13 @@
+extends ../layouts/layout
+block head
+    script(src="/js/project.js")
+
+block header
+    .navbar
+        .navbar-inner
+            a(class="brand" href="/") Главная
+            a(class="brand" href="/client/project") Проекты
+            a(class="brand" href="/client/operation") Операции
+
+            div(class="pull-right")
+                a(class="brand" href="/logout") Выход

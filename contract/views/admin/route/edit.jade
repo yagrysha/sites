@@ -1,0 +1,146 @@
+extends ../../layouts/admin
+block content
+    div(class="page-header") Маршрут
+
+    div(class="tabbable")
+        ul(class="nav nav-tabs")
+            li(class="active")
+                a(href="#tab1", data-toggle="tab") Описание маршрута
+            li
+                a(href="#tab2" data-toggle="tab") Операции
+            li
+                a(href="#tab3" data-toggle="tab") Поля
+
+    div(class="tab-content")
+        div(class="tab-pane active", id="tab1")
+            ul(class="nav nav-pills")
+                li(class="active")
+                    a(href="#") Редактировать
+
+        div(class="tab-pane", id="tab2")
+
+            ul(class="nav nav-pills")
+                li(class="active")
+                    a(href="javascript:void(0)" onclick="operation_create_form('#{route.id}');") Добавить операцию
+
+            if (operations.length)
+                table(class="table table-hover")
+                    thead
+                        tr
+                            th Алиас
+                            th Название
+                            th Описание
+                            th(width="220px") Действия
+                    tbody
+                        - operations.forEach(function(operation){
+                            tr
+                                td #{operation.alias}
+                                td #{operation.name}
+                                td #{operation.description}
+                                td
+                                    div(class="btn-group")
+                                        a(href="javascript:void(0)", class="btn btn-primary", onclick="operation_edit_form('#{operation.id}');") Редактировать
+                                        a(class="btn btn-primary", onclick="return delete_confirm();", href="/admin/route/delete/#{operation.id}") Удалить
+                        - })
+            else
+                | Нет добавленных операций
+        div(class="tab-pane", id="tab3")
+
+            ul(class="nav nav-pills")
+                li(class="active")
+                    a(href="javascript:void(0)" onclick="field_create_form('#{route.id}');") Добавить поле
+
+            if (op_fields.length)
+                table(class="table table-hover")
+                    thead
+                        tr
+                            th Идентификатор
+                            th Название
+                            th Лейбл
+                            th Тип
+                            th Описание
+                            th(width="220px") Действия
+                    tbody
+                        - op_fields.forEach(function(op_field){
+                            tr
+                                td(colspan="7")
+                                    span(class="label") #{op_field.name}
+
+                            - op_field.fields.forEach(function(field){
+                                tr
+                                    td #{field.name}
+                                    td #{field.title}
+                                    td #{field.label}
+                                    td #{field.type}
+                                    td #{field.description}
+                                    td
+                                        div(class="btn-group")
+                                            a(href="javascript:void(0)", class="btn btn-primary", onclick="field_edit_form('#{field.id}');") Редактировать
+                                            a(class="btn btn-primary", onclick="return delete_confirm();", href="/admin/route/delete/#{field.id}") Удалить
+                            - })
+                        - })
+            else
+                | Нет добавленных полей
+
+    include modal/modal
+
+    script.
+        function operation_edit_form(operation_id){
+            $.ajax({
+                type: "GET",
+                url: "/admin/route/operation/edit/" + operation_id,
+                beforeSend: function(){
+                    $('#modalForm #error').attr('class', 'alert alert-error hide');
+                },
+                success: function(data){
+                    $('#form').html(data);
+                    $('#form form').attr('action', '/admin/route/operation/edit/' + operation_id)
+                    $('#modalForm').modal('show');
+                }
+            });
+        }
+
+        function field_edit_form(field_id){
+            $.ajax({
+                type: "GET",
+                url: "/admin/route/field/edit/" + field_id,
+                beforeSend: function(){
+                    $('#modalForm #error').attr('class', 'alert alert-error hide');
+                },
+                success: function(data){
+                    $('#form').html(data);
+                    $('#form form').attr('action', '/admin/route/field/edit/' + field_id)
+                    $('#modalForm').modal('show');
+                }
+            });
+        }
+
+        function field_create_form(route_id){
+            $.ajax({
+                type: "GET",
+                url: "/admin/route/createfield/" + route_id,
+                beforeSend: function(){
+                    $('#modalForm #error').attr('class', 'alert alert-error hide');
+                },
+                success: function(data){
+                    $('#form').html(data);
+                    $('#form form').attr('action', '/admin/route/createfield/' + route_id)
+                    $('#modalForm').modal('show');
+                }
+            });
+        }
+
+        function operation_create_form(route_id){
+            $.ajax({
+                type: "GET",
+                url: "/admin/route/createoperation/" + route_id,
+                beforeSend: function(){
+                    $('#modalForm #error').attr('class', 'alert alert-error hide');
+                },
+                success: function(data){
+                    $('#form').html(data);
+                    $('#form form').attr('action', '/admin/route/createoperation/' + route_id)
+                    $('#modalForm').modal('show');
+                }
+            });
+        }

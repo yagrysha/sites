@@ -1,0 +1,268 @@
+/* @override http://demotemplates.joomlashack.com/vintage/templates/js_tba/css/nav.css */
+
+
+/* @group NAVBAR */
+
+.menubar {
+	font: 14px Georgia, "Times New Roman", Times, serif;
+	width: 100%;
+	margin: 0px;
+	height: 42px;
+}
+
+#navmenu {
+	height: 42px;
+	padding: 0px 0px 0px 21px;
+	margin: 0;
+	position: relative;
+	z-index: 900;
+	float: none;
+	width: 100%;
+	background: url(/images/navcontainer.png) no-repeat left top;
+}
+
+#navmenu ul {
+	float: left;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	margin-left: 2px;
+}
+
+#navmenu ul li {
+	position: relative;
+	margin: 0;
+}
+
+/*PARENT MENU*/
+
+#navmenu a {
+	float: left;
+	color: #ffffff;
+	text-decoration: none;
+	display: block;
+	cursor: pointer;
+	height: 42px;
+	line-height: 40px;
+	padding: 0px 15px;
+}
+
+/*PARENT MENU ITEM HOVER*/
+#navmenu li a:hover {
+	height: 42px;
+}
+#navmenu li a:hover {
+	background: url(/images/menubar_over.png) no-repeat right top;
+}
+
+/*ALL LISTS*/
+
+#navmenu li {
+	float: left;
+	padding: 0;
+	background: none;
+}
+
+#navmenu ul ul a {
+	background: none;
+}
+
+#navmenu li:hover ul, 
+#navmenu li li:hover ul, 
+#navmenu li li li:hover ul, 
+#navmenu li li li li:hover ul,
+#navmenu li.iehover ul, 
+#navmenu li li.iehover ul, 
+#navmenu li li li.iehover ul,
+#navmenu li li li li.iehover ul {
+	background: #860805 url(/images/menu_gradient.png) repeat-x left top;
+}
+
+/*PARENT ITEM SEPARATOR*/
+
+#navmenu li a {
+	background: url(/images/menubar.png) 100% 0 no-repeat;
+}
+
+
+/*DEFINE HOVER COLORS*/
+
+#navmenu li:hover a, #navmenu li.iehover a {
+	color: #ffffff;
+}
+
+#navmenu ul li a:hover,
+#navmenu ul li ul li a:hover,
+#navmenu ul li ul li ul li a:hover {
+	color: #eee;
+}
+
+/*SUBLEVEL STYLES*/
+
+/*SUBLEVEL TEXT STYLES*/
+
+#navmenu li li a {
+	font-weight: normal;
+	padding: 0;
+	height: 26px;
+	line-height: 26px;
+	text-indent: 5px;
+}
+
+#navmenu ul ul a {
+	display: block;
+	color: #ffffff;
+	text-decoration: none;
+	width: 170px;
+	text-transform: none;
+}
+
+#navmenu li li {
+	padding: 0;
+	background: none;
+	/*DONT SHOW THE BACKGROUND IMAGE*/
+}
+
+/*SUBLEVEL POSITIONING*/
+
+#navmenu li li {
+	float: left;
+	padding: 0;
+	width: 173px;
+}
+
+#navmenu li ul ul {
+	margin: -39px 0 0 173px;
+}
+
+#navmenu li:hover, #navmenu li.iehover {
+	left: 0;
+}
+
+/*SUBLEVEL HOVER STYLES*/
+
+#navmenu ul ul a:hover {
+	background: none;
+	height: 26px;
+	line-height: 26px;
+	padding: 0;
+	margin: 0;
+}
+
+#navmenu li li:hover {
+	background: #780705;
+}
+
+#navmenu li ul {
+	top: 39px;
+	position: absolute;
+	left: -999em;
+	height: auto;
+	width: 173px;
+	font-weight: normal;
+	border-width: 0;
+	margin: 0;
+	padding: 0;
+	border-right: 1px solid #780705;
+	border-left: 1px solid #780705;
+	border-bottom: none;
+}
+
+
+#navmenu li.active a {
+	color: #e3daa1;
+}
+#navmenu li.active a:hover {
+	background: url(/images/menubar.png) no-repeat right top;
+	color: #e3daa1;
+}
+
+/* NO SUBLEVEL ACTIVE STYLES */
+#navmenu ul li.active ul li a,
+#navmenu ul li.active ul li,
+#navmenu ul li.active ul li a:hover,
+#navmenu ul li.active ul li.hover {
+	color: #fff;
+	background-image: none;
+}
+/*SUBLEVEL PARENT INDICATORS*/
+
+
+#navmenu ul li ul li a.child{
+	background: url(/images/arrow_right.gif) 100% 50% no-repeat;
+}
+
+#navmenu ul li.active ul li a.child {
+	background: url(/images/arrow_right.gif) 100% 50% no-repeat;
+}
+
+
+#navmenu ul li ul li a:hover {
+	background-image: none;
+}
+
+/* HIDE OTHER LISTS FROM IE */
+
+#navmenu li:hover ul ul, 
+#navmenu li:hover ul ul ul,
+#navmenu li:hover ul ul ul ul,  
+#navmenu li.iehover ul ul, 
+#navmenu li.iehover ul ul ul, 
+#navmenu li.iehover ul ul ul ul {
+	left: -999em;
+}
+
+#navmenu li:hover ul, 
+#navmenu li li:hover ul, 
+#navmenu li li li:hover ul, 
+#navmenu li li li li:hover ul,
+#navmenu li.iehover ul, 
+#navmenu li li.iehover ul, 
+#navmenu li li li.iehover ul,
+#navmenu li li li li.iehover ul {
+	z-index: 100;
+	left: 0;
+}
+
+/* BECAUSE IE DOESNT UNDERSTAND CSS EVEN IN 2007 */
+
+#navmenu li.iehover ul li.iehover {
+	background: #780705;
+}
+
+/* @end */
+/* @group Controller */
+
+ul#cPanel_button {
+	list-style: none;
+	float: right;
+	position: relative;
+	left: -40px;
+}
+
+ul#cPanel_button li.panel {
+	float: left;
+	list-style: none;
+	padding-right: 8px;
+	border: none;
+	background: url(/images/panel.png) no-repeat right bottom;
+	}
+
+ul#cPanel_button li.panel a#button.button {
+	display: block;
+	float: left;
+	padding-right: 8px;
+	height: 33px;
+	line-height: 33px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #3d2518;
+	background: url(/images/panel.png) no-repeat left bottom;
+
+}
+
+ul#cPanel_button li.panel a#button .button:hover {
+
+}
+
+/* @end */

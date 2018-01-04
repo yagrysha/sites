@@ -1,0 +1,18 @@
+extends ../layout
+block content
+    div(class="page-header")
+        h3 История операций по проекту "#{project.name}"
+    each operation in log
+        div(class="alert-info")
+            h4 Операция: #{operation.operation_name}
+            | <hr/>
+            each data in operation.data
+                | Поле: #{data.name} <br/>
+                if (data.value)
+                    | Значение: #{data.value} <br/>
+                if (data.detail)
+                    if(data.detail.type == "file")
+                        | Значение: <a href="/file/log/#{operation.operation_id}/#{data.detail.id}">#{data.detail.name}</a> <br/>
+                | Обновлено: #{data.updatedAt} <br/>
+                | Пользователь: #{data.user} <br/>
+                | <hr/>

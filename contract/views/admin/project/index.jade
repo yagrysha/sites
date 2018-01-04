@@ -1,0 +1,59 @@
+extends ../layout
+block content
+    .page-header
+        h1 Project page
+
+    ul
+        li
+            a(href="/project/info") info page
+        li
+            a(href="/project/list") list projects
+        if _user.isAdmin()
+            li
+                a(href="/project/list/admin") admin list projects
+
+
+    if canCreate
+        a(href="/project/create") CreateProject
+        br
+
+
+    h2 Projects
+    h3 созданные мной
+    ul
+        each project in myProjects
+            li
+                a(href="/project/view/#{project._id}")= project.name
+                br
+                = project.description
+                br
+                = project.getStatusName()
+                br
+                | создан: !{project.createdAt}
+    h3 курируемые
+    ul
+        each project in sProjects
+            li
+                a(href="/project/view/#{project._id}")= project.name
+                p= project.description
+
+    h2 Операции
+
+    h3 новые
+    ul
+        each op in newOperations
+            li
+                a(href="/project/operation/#{op._id}")= op.operation.name
+
+    h3 открытые
+    ul
+        each op in openOperations
+            li
+                a(href="/project/operation/#{op._id}")= op.operation.name
+
+    h3 алиасы settest
+    ul
+        each op in aliasOperations
+            li
+                a(href="/project/operation/#{op._id}")= op.operation.name
+

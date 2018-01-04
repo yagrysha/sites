@@ -1,0 +1,19 @@
+extends ../layout
+block content
+    div(class="page-header")
+        h3 Список проектов
+        div(class="pull-right", style="margin-right: 20px;")
+            a(class="btn btn-primary", href="/client/project/create", style="margin-top:-90px;") Новый проект
+
+    ul
+        each project in projects
+            li
+                a(href="/client/project/view/#{project._id}")= project.name
+                br
+                = project.description
+                br
+                div(class="label")= project.getStatusName()
+                br
+                | создан: !{project.createdAt}
+
+

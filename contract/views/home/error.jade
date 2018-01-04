@@ -1,0 +1,8 @@
+extends ../layouts/layout
+
+block content
+    .page-header
+        h1 Сообщение об ошибке
+        p тут выводить сообщение об ошибке.
+            br
+            |#{error.code} #{error.msg}

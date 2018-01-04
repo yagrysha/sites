@@ -1,0 +1,5 @@
+{
+    "db_url": "mongodb://127.0.0.1:27017/contract",
+    "port": 2020,
+    "upload_file_dir": "upload"
+}
